@@ -1,0 +1,12 @@
+% [ind,map]=imread('restore_03.gif');
+% Img=im2double(ind2rgb(ind,map));
+Img=im2double(imread('restore_02.jpg'));
+LEN = 5;
+THETA = 45;
+PSF = fspecial('motion', LEN, THETA);
+% blurred = imfilter(I, PSF, 'conv', 'circular');
+figure;imshow(Img);
+title('Blurred Image');
+wnr1 = deconvwnr(Img, PSF, 0.001);
+figure;imshow(wnr1);
+title('Restored Image');
